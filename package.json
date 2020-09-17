@@ -31,6 +31,6 @@
     "debug": "^4.1.1"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.com/@carloshatus"
+    "registry": "https://npm.pkg.github.com/@carloshatus"
   }
 }
