@@ -39,7 +39,7 @@ describe('toLog tests', () => {
 
   it('should log with invalid data', () => {
     const id = 'test';
-    const data = { value: 1, data: null };
+    const data = { value: 1, data: {} };
     data.data = data;
     const type = 'log';
     const message = 'hello';
