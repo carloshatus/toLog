@@ -1,3 +1,1 @@
-import ToLog from "./src/toLog";
-
-export default ToLog;
+export { default as ToLog } from './src/toLog';

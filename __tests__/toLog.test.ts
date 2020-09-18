@@ -1,4 +1,4 @@
-import ToLog from '../index';
+import { ToLog } from '../index';
 
 describe('toLog tests', () => {
   it('should log', () => {
