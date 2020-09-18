@@ -10,7 +10,7 @@ npm i @carloshatus/to_log
 
 ### import
 ```ts
-import ToLog from 'to_log';
+import ToLog from '@carloshatus/to_log';
 ```
 
 ### instance
