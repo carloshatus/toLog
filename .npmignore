@@ -3,3 +3,4 @@ tsconfig.json
 /__tests__
 coverage
 jest.config.js
+index.ts
