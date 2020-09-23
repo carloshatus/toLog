@@ -1,11 +1,18 @@
 # toLog
- A small lib to organize logs at your service, compatible with AWS CloudWatch logs. 
+ A small lib to organize logs at your service, compatible with [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-logging.html) logging and [AWS CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html) logs. 
 
 ## Fast start
 
 ### install
+
+#### npm
 ```sh
 npm i @carloshatus/to_log
+```
+
+#### yarn
+```sh
+yarn add @carloshatus/to_log
 ```
 
 ### import
@@ -43,6 +50,7 @@ log.error('this is a error log with data:', { value: 'data' });
 ```ts
 new ToLog(identifier, appPrefix);
 ```
+
 create a new instance of ToLog object.
 - identifier **[String]**: _name for your log;_
 - appPrefix **[String, default: 'app']**: _prefix to better identify your application in the debug log;_
@@ -53,6 +61,7 @@ create a new instance of ToLog object.
 ```ts
 log.info(message, data);
 ```
+
 log a info message.
 - message **[String]**: _message to your log;_
 - data **[Any, default: 'null']**: _complement of your log, it is automatically parsed to string;_
@@ -67,6 +76,7 @@ log a info message.
 ```ts
 log.warn(message, data);
 ```
+
 log a warning message.
 - message **[String]**: _message to your log;_
 - data **[Any, default: 'null']**: _complement of your log, it is automatically parsed to string;_
@@ -81,6 +91,7 @@ log a warning message.
 ```ts
 log.error(message, data);
 ```
+
 log a error message.
 - message **[String]**: _message to your log;_
 - data **[Any, default: 'null']**: _complement of your log, it is automatically parsed to string;_
@@ -93,6 +104,7 @@ log a error message.
 
 ### log mode
 The default log mode is `console` mode. To use the `debug` mode, start your app with the node environment variable `DEBUG`.
+
 ```sh
 DEBUG=app:* node index.js
 DEBUG=your_app_prefix:* node index.js
