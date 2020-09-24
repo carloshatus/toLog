@@ -30,9 +30,6 @@
   "dependencies": {
     "debug": "^4.1.1"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "keywords": [
     "logging",
     "debug",
