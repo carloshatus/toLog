@@ -28,20 +28,48 @@ const log = new ToLog('your:log');
 ### logging
 ```ts
 log.info('this is a info log');
+// console mode
+// [INFO] this is a info log
+
+// debug mode
 // app:your:log [INFO] this is a info log
+
 log.warn('this is a warning log');
+// console mode
+// [WARN] this is a warning log
+
+// debug mode
 // app:your:log [WARN] this is a warning log
+
 log.error('this is a error log');
+// console mode
+// [ERROR] this is a error log
+
+// debug mode
 // app:your:log [ERROR] this is a error log
 ```
 
 ### data on log
 ```ts
 log.info('this is a info log with data:', { value: 'data' });
+// console mode
+// [INFO] this is a info log with data: {"value":"data"}
+
+// debug mode
 // app:your:log [INFO] this is a info log with data: {"value":"data"}
+
 log.warn('this is a warning log with data:', { value: 'data' });
+// console mode
+// [WARN] this is a warning log with data: {"value":"data"}
+
+// debug mode
 // app:your:log [WARN] this is a warning log with data: {"value":"data"}
+
 log.error('this is a error log with data:', { value: 'data' });
+// console mode
+// [ERROR] this is a error log with data: {"value":"data"}
+
+// debug mode
 // app:your:log [ERROR] this is a error log with data: {"value":"data"}
 ```
 
@@ -52,7 +80,7 @@ new ToLog(identifier, appPrefix);
 ```
 
 create a new instance of ToLog object.
-- identifier **[String]**: _name for your log;_
+- identifier **[String]**: _name for your debug log;_
 - appPrefix **[String, default: 'app']**: _prefix to better identify your application in the debug log;_
 
 ### log functions
@@ -70,6 +98,12 @@ log a info message.
 > 
 > E.g. 
 > 
+> `// console mode`
+> 
+> `[INFO] this is a info log with data: [UnexpectedJSONParseError]: Converting circular structure to JSON`
+> 
+> `// debug mode`
+> 
 > `app:your:log [INFO] this is a info log with data: [UnexpectedJSONParseError]: Converting circular structure to JSON`
 
 #### warn
@@ -84,6 +118,12 @@ log a warning message.
 > Note: if occurred a problem on parse the data to string, the error message is returned on data place.
 > 
 > E.g. 
+> 
+> `// console mode`
+> 
+> `[INFO] this is a info log with data: [UnexpectedJSONParseError]: Converting circular structure to JSON`
+> 
+> `// debug mode`
 > 
 > `app:your:log [INFO] this is a info log with data: [UnexpectedJSONParseError]: Converting circular structure to JSON`
 
@@ -100,10 +140,16 @@ log a error message.
 > 
 > E.g.
 > 
->  `app:your:log [INFO] this is a info log with data: [UnexpectedJSONParseError]: Converting circular structure to JSON`
+> `// console mode`
+> 
+> `[INFO] this is a info log with data: [UnexpectedJSONParseError]: Converting circular structure to JSON`
+> 
+> `// debug mode`
+> 
+> `app:your:log [INFO] this is a info log with data: [UnexpectedJSONParseError]: Converting circular structure to JSON`
 
 ### log mode
-The default log mode is `console` mode. To use the `debug` mode, start your app with the node environment variable `DEBUG`.
+The default log mode is `console mode`. To use the `debug mode`, start your app with the node environment variable `DEBUG`.
 
 ```sh
 DEBUG=app:* node index.js

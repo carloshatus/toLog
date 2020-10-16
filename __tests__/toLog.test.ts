@@ -12,25 +12,6 @@ describe('toLog tests', () => {
     log.toLog(message);
     expect(infoSpy).toHaveBeenCalledWith(message);
     expect(infoLogSpy).toHaveBeenCalledWith(
-      expect.stringContaining(id),
-      expect.stringContaining(type.toUpperCase()),
-      expect.stringContaining(message)
-    );
-  });
-
-  it('should log with app prefix', () => {
-    const id = 'test';
-    const prefix = 'pre';
-    const type = 'log';
-    const message = 'hello';
-    const log = new ToLog(id, prefix);
-    expect(log).toHaveProperty('toLog');
-    const infoSpy = jest.spyOn(log, 'toLog');
-    const infoLogSpy = jest.spyOn(console, type);
-    log.toLog(message);
-    expect(infoSpy).toHaveBeenCalledWith(message);
-    expect(infoLogSpy).toHaveBeenCalledWith(
-      expect.stringContaining(`${prefix}:${id}`),
       expect.stringContaining(type.toUpperCase()),
       expect.stringContaining(message)
     );
@@ -48,7 +29,6 @@ describe('toLog tests', () => {
     log.toLog(message, data);
     expect(infoSpy).toHaveBeenCalledWith(message, data);
     expect(infoLogSpy).toHaveBeenCalledWith(
-      expect.stringContaining(id),
       expect.stringContaining(type.toUpperCase()),
       expect.stringContaining(message),
       expect.stringContaining(JSON.stringify(data))
@@ -68,7 +48,6 @@ describe('toLog tests', () => {
     log.toLog(message, data);
     expect(infoSpy).toHaveBeenCalledWith(message, data);
     expect(infoLogSpy).toHaveBeenCalledWith(
-      expect.stringContaining(id),
       expect.stringContaining(type.toUpperCase()),
       expect.stringContaining(message),
       expect.stringContaining('UnexpectedJSONParseError')
@@ -86,7 +65,6 @@ describe('toLog tests', () => {
     log[type](message);
     expect(infoSpy).toHaveBeenCalledWith(message, null, type);
     expect(infoLogSpy).toHaveBeenCalledWith(
-      expect.stringContaining(id),
       expect.stringContaining(type.toUpperCase()),
       expect.stringContaining(message)
     );
@@ -103,7 +81,6 @@ describe('toLog tests', () => {
     log[type](message);
     expect(infoSpy).toHaveBeenCalledWith(message, null, type);
     expect(infoLogSpy).toHaveBeenCalledWith(
-      expect.stringContaining(id),
       expect.stringContaining(type.toUpperCase()),
       expect.stringContaining(message)
     );
@@ -121,7 +98,6 @@ describe('toLog tests', () => {
     log[type](message, data);
     expect(infoSpy).toHaveBeenCalledWith(message, data, type);
     expect(infoLogSpy).toHaveBeenCalledWith(
-      expect.stringContaining(id),
       expect.stringContaining(type.toUpperCase()),
       expect.stringContaining(message),
       expect.stringContaining(JSON.stringify(data))
@@ -139,7 +115,6 @@ describe('toLog tests', () => {
     log[type](message);
     expect(infoSpy).toHaveBeenCalledWith(message, null, type);
     expect(infoLogSpy).toHaveBeenCalledWith(
-      expect.stringContaining(id),
       expect.stringContaining(type.toUpperCase()),
       expect.stringContaining(message)
     );
@@ -157,7 +132,6 @@ describe('toLog tests', () => {
     log[type](message, data);
     expect(infoSpy).toHaveBeenCalledWith(message, data, type);
     expect(infoLogSpy).toHaveBeenCalledWith(
-      expect.stringContaining(id),
       expect.stringContaining(type.toUpperCase()),
       expect.stringContaining(message),
       expect.stringContaining(JSON.stringify(data))
@@ -177,6 +151,25 @@ describe('toLog tests', () => {
     log[type](message);
     expect(infoSpy).toHaveBeenCalledWith(message, null, type);
     expect(infoDebugSpy).toHaveBeenCalledWith(
+      expect.any(String),
+      expect.stringContaining(type.toUpperCase()),
+      expect.stringContaining(message)
+    );
+  });
+
+  it('should log with app prefix in debug', () => {
+    const prefix = 'pre';
+    process.env.DEBUG = `${prefix}:*`;
+    const id = 'test';
+    const type = 'log';
+    const message = 'hello';
+    const log = new ToLog(id, prefix);
+    expect(log).toHaveProperty('toLog');
+    const infoSpy = jest.spyOn(log, 'toLog');
+    const infoLogSpy = jest.spyOn(log, 'debug');
+    log.toLog(message);
+    expect(infoSpy).toHaveBeenCalledWith(message);
+    expect(infoLogSpy).toHaveBeenCalledWith(
       expect.any(String),
       expect.stringContaining(type.toUpperCase()),
       expect.stringContaining(message)

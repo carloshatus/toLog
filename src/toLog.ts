@@ -55,13 +55,12 @@ export class ToLog {
       return;
     }
     if (!data) {
-      console[type](this.identifier, typeToConsole, message.trim());
+      console[type](typeToConsole, message.trim());
       return;
     }
     const dataToConsole = this.getDataToConsole(data);
     console[type](
-      this.identifier,
-      `${typeToConsole} -`,
+      typeToConsole,
       message.trim(),
       dataToConsole
     );
