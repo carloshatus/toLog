@@ -34,7 +34,7 @@
     "logging",
     "debug",
     "console",
-    "message",
-    "AWS CloudWatch"
+    "AWS",
+    "CloudWatch"
   ]
 }

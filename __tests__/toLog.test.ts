@@ -63,7 +63,7 @@ describe('toLog tests', () => {
     const infoSpy = jest.spyOn(log, 'toLog');
     const infoLogSpy = jest.spyOn(console, type);
     log[type](message);
-    expect(infoSpy).toHaveBeenCalledWith(message, null, type);
+    expect(infoSpy).toHaveBeenCalledWith(message, undefined, type);
     expect(infoLogSpy).toHaveBeenCalledWith(
       expect.stringContaining(type.toUpperCase()),
       expect.stringContaining(message)
@@ -79,7 +79,7 @@ describe('toLog tests', () => {
     const infoSpy = jest.spyOn(log, 'toLog');
     const infoLogSpy = jest.spyOn(console, type);
     log[type](message);
-    expect(infoSpy).toHaveBeenCalledWith(message, null, type);
+    expect(infoSpy).toHaveBeenCalledWith(message, undefined, type);
     expect(infoLogSpy).toHaveBeenCalledWith(
       expect.stringContaining(type.toUpperCase()),
       expect.stringContaining(message)
@@ -113,10 +113,64 @@ describe('toLog tests', () => {
     const infoSpy = jest.spyOn(log, 'toLog');
     const infoLogSpy = jest.spyOn(console, type);
     log[type](message);
-    expect(infoSpy).toHaveBeenCalledWith(message, null, type);
+    expect(infoSpy).toHaveBeenCalledWith(message, undefined, type);
     expect(infoLogSpy).toHaveBeenCalledWith(
       expect.stringContaining(type.toUpperCase()),
       expect.stringContaining(message)
+    );
+  });
+
+  it('should log a error with zero data', () => {
+    const id = 'test';
+    const data = 0;
+    const type = 'error';
+    const message = 'hello';
+    const log = new ToLog(id);
+    expect(log).toHaveProperty(type);
+    const infoSpy = jest.spyOn(log, 'toLog');
+    const infoLogSpy = jest.spyOn(console, type);
+    log[type](message, data);
+    expect(infoSpy).toHaveBeenCalledWith(message, data, type);
+    expect(infoLogSpy).toHaveBeenCalledWith(
+      expect.stringContaining(type.toUpperCase()),
+      expect.stringContaining(message),
+      expect.stringContaining(JSON.stringify(data))
+    );
+  });
+
+  it('should log a error with false data', () => {
+    const id = 'test';
+    const data = false;
+    const type = 'error';
+    const message = 'hello';
+    const log = new ToLog(id);
+    expect(log).toHaveProperty(type);
+    const infoSpy = jest.spyOn(log, 'toLog');
+    const infoLogSpy = jest.spyOn(console, type);
+    log[type](message, data);
+    expect(infoSpy).toHaveBeenCalledWith(message, data, type);
+    expect(infoLogSpy).toHaveBeenCalledWith(
+      expect.stringContaining(type.toUpperCase()),
+      expect.stringContaining(message),
+      expect.stringContaining(JSON.stringify(data))
+    );
+  });
+
+  it('should log a error with null data', () => {
+    const id = 'test';
+    const data = null;
+    const type = 'error';
+    const message = 'hello';
+    const log = new ToLog(id);
+    expect(log).toHaveProperty(type);
+    const infoSpy = jest.spyOn(log, 'toLog');
+    const infoLogSpy = jest.spyOn(console, type);
+    log[type](message, data);
+    expect(infoSpy).toHaveBeenCalledWith(message, data, type);
+    expect(infoLogSpy).toHaveBeenCalledWith(
+      expect.stringContaining(type.toUpperCase()),
+      expect.stringContaining(message),
+      expect.stringContaining(JSON.stringify(data))
     );
   });
 
@@ -149,7 +203,7 @@ describe('toLog tests', () => {
     const infoSpy = jest.spyOn(log, 'toLog');
     const infoDebugSpy = jest.spyOn(log, 'debug');
     log[type](message);
-    expect(infoSpy).toHaveBeenCalledWith(message, null, type);
+    expect(infoSpy).toHaveBeenCalledWith(message, undefined, type);
     expect(infoDebugSpy).toHaveBeenCalledWith(
       expect.any(String),
       expect.stringContaining(type.toUpperCase()),

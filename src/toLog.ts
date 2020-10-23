@@ -41,20 +41,20 @@ export class ToLog {
   /**
    * Print your log
    * @param {string} message - message to log
-   * @param {*} [data=null] - complement data to log
+   * @param {*} [data=undefined] - complement data to log
    * @param {Types} type - type of log
    */
-  toLog(message: string, data: any = null, type: Types = Types.log) {
+  toLog(message: string, data: any = undefined, type: Types = Types.log) {
     const typeToConsole = `[${type.toUpperCase()}]`;
     if (process.env.DEBUG) {
-      if (!data) {
+      if (data === undefined) {
         this.debug('%s - %s', typeToConsole, message.trim());
         return;
       }
       this.debug('%s - %s %j', typeToConsole, message.trim(), data);
       return;
     }
-    if (!data) {
+    if (data === undefined) {
       console[type](typeToConsole, message.trim());
       return;
     }
@@ -69,27 +69,27 @@ export class ToLog {
   /**
    * Print a info log
    * @param {string} message - message to log
-   * @param {*} [data=null] - complement data to log
+   * @param {*} [data=undefined] - complement data to log
    */
-  info(message: string, data: any = null) {
+  info(message: string, data: any = undefined) {
     this.toLog(message, data, Types.info);
   }
 
   /**
    * Print a warning log
    * @param {string} message - message to log
-   * @param {*} [data=null] - complement data to log
+   * @param {*} [data=undefined] - complement data to log
    */
-  warn(message: string, data: any = null) {
+  warn(message: string, data: any = undefined) {
     this.toLog(message, data, Types.warn);
   }
 
   /**
    * Print a error log
    * @param {string} message - message to log
-   * @param {*} [data=null] - complement data to log
+   * @param {*} [data=undefined] - complement data to log
    */
-  error(message: string, data: any = null) {
+  error(message: string, data: any = undefined) {
     this.toLog(message, data, Types.error);
   }
 }

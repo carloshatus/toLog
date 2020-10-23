@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.16] - 2020-10-22
+
+### Fix
+
+- print false value on data
+
 ## [1.0.15] - 2020-10-16
 
 ### Removed
