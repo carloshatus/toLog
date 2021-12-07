@@ -33,7 +33,7 @@ export class ToLog {
   getDataToConsole(data: any): string {
     try {
       return JSON.stringify(data);
-    } catch (error) {
+    } catch (error: any) {
       return `[UnexpectedJSONParseError]: ${error.message}`;
     }
   }

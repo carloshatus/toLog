@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.17] - 2021-12-07
+
+### Changed
+
+- minor adjusts
 ## [1.0.16] - 2020-10-22
 
 ### Fix
