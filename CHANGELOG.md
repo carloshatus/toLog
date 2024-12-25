@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0] - 2024-12-25
+
+### Changed
+
+- dependencies updateds
+- require node version `>= 18`
+
 ## [1.0.17] - 2021-12-07
 
 ### Changed
