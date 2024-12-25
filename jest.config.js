@@ -13,7 +13,7 @@ export default {
   },
   maxWorkers: "50%",
   testEnvironment: "node",
-  testMatch: ["**/__tests__/**/*.(spec|test).[jt]s?(x)"],
+  testMatch: ["**/__tests__/**/*.(spec|test).ts"],
   transform: { "^.+\\.ts$": "ts-jest" },
   watchPathIgnorePatterns: ["node_modules"],
 };
