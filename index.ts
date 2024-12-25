@@ -1,1 +1,1 @@
-export { default as ToLog } from './src/toLog';
+export { default as ToLog } from "./src/toLog";

@@ -21,7 +21,7 @@
 ### Changed
 
 - readme changed to show the difference between console mode and debug mode
-  
+
 ## [1.0.14] - 2020-09-24
 
 ### Added
@@ -46,4 +46,3 @@
 ### Changed
 
 - minor adjusts
-

@@ -1,15 +1,15 @@
-import { debug } from 'debug';
+import { debug } from "debug";
 
 enum Types {
-  info = 'info',
-  warn = 'warn',
-  error = 'error',
-  log = 'log',
+  info = "info",
+  warn = "warn",
+  error = "error",
+  log = "log",
 }
 
 export class ToLog {
-  identifier: string
-  debug: debug.Debugger
+  identifier: string;
+  debug: debug.Debugger;
 
   /**
    * Use to create a new logger.
@@ -18,8 +18,8 @@ export class ToLog {
    * @param {string} [appPrefix='app'] - prefix to name log
    * @constructor
    */
-  constructor(identifier: string, appPrefix: string = 'app') {
-    const newIdentifier = `${appPrefix.toLowerCase()}:${identifier.toLowerCase()}`
+  constructor(identifier: string, appPrefix: string = "app") {
+    const newIdentifier = `${appPrefix.toLowerCase()}:${identifier.toLowerCase()}`;
     this.identifier = newIdentifier;
     this.debug = debug(newIdentifier);
   }
@@ -48,10 +48,10 @@ export class ToLog {
     const typeToConsole = `[${type.toUpperCase()}]`;
     if (process.env.DEBUG) {
       if (data === undefined) {
-        this.debug('%s - %s', typeToConsole, message.trim());
+        this.debug("%s - %s", typeToConsole, message.trim());
         return;
       }
-      this.debug('%s - %s %j', typeToConsole, message.trim(), data);
+      this.debug("%s - %s %j", typeToConsole, message.trim(), data);
       return;
     }
     if (data === undefined) {
@@ -59,11 +59,7 @@ export class ToLog {
       return;
     }
     const dataToConsole = this.getDataToConsole(data);
-    console[type](
-      typeToConsole,
-      message.trim(),
-      dataToConsole
-    );
+    console[type](typeToConsole, message.trim(), dataToConsole);
   }
 
   /**
