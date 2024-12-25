@@ -1,6 +1,6 @@
 {
   "name": "@carloshatus/to_log",
-  "version": "1.0.17",
+  "version": "1.1.0",
   "description": "A small lib to organize logs at your service, compatible with AWS Lambda logging and AWS CloudWatch logs.",
   "type": "module",
   "main": "./dist/index.js",
